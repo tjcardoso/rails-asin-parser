@@ -39,10 +39,14 @@ class UrlsController < ApplicationController
     amazon_title.lstrip!
     amazon_title.rstrip!
 
+    amazon_price = doc.css('span#priceblock_ourprice').text
+    string_price = '%.2f' % amazon_price[1..-1].to_f
+    float_price = string_price.to_f
+
     @product = Product.new
     @product.title = amazon_title
     @product.asin = (match = new_url.match(/\/dp\/([^\/]*)/)) && match[1]
-
+    @product.price = float_price
     @product.save
     puts ">>>>>>>>>    #{amazon_title}"
 
