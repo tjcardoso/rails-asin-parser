@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+p = Product.create(title: "Bananas")
+u = Url.create(url: "https://www.amazon.com/dp/B002QYW8LW")
