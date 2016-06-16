@@ -41,8 +41,11 @@ class UrlsController < ApplicationController
 
     @product = Product.new
     @product.title = amazon_title
+    @product.asin = (match = new_url.match(/\/dp\/([^\/]*)/)) && match[1]
+
     @product.save
     puts ">>>>>>>>>    #{amazon_title}"
+
 
     respond_to do |format|
       if @url.save
